@@ -28,3 +28,15 @@ const postData = async(url = '', data = {}) => {
         console.log("error", error);
     }
 }
+
+//Function to GET Web API Data
+const getWeatherData = async(zip) => {
+    try {
+        const response = await fetch(baseURL + zip + apiKey);
+        const data = await response.json();
+
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+};
