@@ -32,3 +32,11 @@ function listening() {
     console.log('server running');
     console.log(`running on localhost: ${port}`);
 }
+
+// Routes
+
+app.get('/', theGetFunction);
+
+function theGetFunction(request, response) {
+    response.send(projectData);
+}
