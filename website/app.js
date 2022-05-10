@@ -4,6 +4,10 @@
 let d = new Date();
 let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
+const apiKey = ',&appid=1823ed9b05f407b753677fc7f5b417a4=metric';
+const server = "http://127.0.0.1:5500";
+
 const postData = async(url = '', data = {}) => {
     //console.log(data);
     const response = await fetch(url, {
