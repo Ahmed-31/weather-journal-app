@@ -35,8 +35,19 @@ function listening() {
 
 // Routes
 
-app.get('/', theGetFunction);
+// GET route
+app.get('/all', theGetFunction);
 
 function theGetFunction(request, response) {
+    response.send(projectData);
+}
+
+// POST route
+
+app.post('/add', thePostFunction);
+
+function thePostFunction(request, response) {
+    projectData = request.body;
+    console.log(projectData);
     response.send(projectData);
 }
