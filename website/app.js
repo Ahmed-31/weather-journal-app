@@ -1,15 +1,14 @@
-/* Global Variables */
-
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 
+// Personal API Key for OpenWeatherMap API
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = ',&appid=5aca0bbb23343940f01aad543cba2b1c&units=metric';
 const server = "http://127.0.0.1:8080";
 
+/* Function to POST data */
 const postData = async(url = '', data = {}) => {
-    //console.log(data);
     const response = await fetch(url, {
         method: 'POST',
         credentials: 'same-origin',
@@ -19,7 +18,6 @@ const postData = async(url = '', data = {}) => {
         // Body data type must match "Content-Type" header        
         body: JSON.stringify(data),
     });
-    console.log(response);
     try {
         const newData = await response.json();
         console.log(newData, `saved successfully to the server`);
@@ -29,7 +27,7 @@ const postData = async(url = '', data = {}) => {
     }
 }
 
-//Function to GET Web API Data
+// Function to GET Web API Data
 const getWeatherData = async(zip) => {
     try {
         const response = await fetch(baseURL + zip + apiKey);
@@ -41,7 +39,7 @@ const getWeatherData = async(zip) => {
     }
 };
 
-
+/* Function called by event listener */
 const generateTheData = () => {
     // get value after click on the button
     const zip = document.getElementById("zip").value;
@@ -76,7 +74,6 @@ const generateTheData = () => {
 };
 
 // Event listener to add function to existing HTML DOM element
-// Function called by event listener
 document.getElementById("generate").addEventListener("click", generateTheData);
 
 // Function to update the UI with the new data
