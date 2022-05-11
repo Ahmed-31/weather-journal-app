@@ -85,10 +85,14 @@ const updateUI = async() => {
         const date = document.getElementById("date");
         const temp = document.getElementById("temp");
         const content = document.getElementById("content");
+        const city = document.getElementById("city");
+        const descrtiption = document.getElementById("description");
 
         date.innerHTML = savedData.newDate;
         temp.innerHTML = savedData.temp + '&degC';
         content.innerHTML = savedData.feelings;
+        city.innerHTML = savedData.city;
+        descrtiption.innerHTML = savedData.description;
     } catch (error) {
         console.log(error);
     }
