@@ -69,6 +69,8 @@ const generateTheData = () => {
 
             updateUI();
 
+            document.getElementById('entry').style.opacity = 1;
+
         }
     });
 };
