@@ -67,6 +67,8 @@ const generateTheData = () => {
 
             postData(server + "/add", info);
 
+            updateUI();
+
         }
     });
 };
@@ -74,3 +76,20 @@ const generateTheData = () => {
 // Event listener to add function to existing HTML DOM element
 // Function called by event listener
 document.getElementById("generate").addEventListener("click", generateTheData);
+
+// Function to update the UI with the new data
+const updateUI = async() => {
+    const response = await fetch(server + '/all');
+    try {
+        const savedData = await response.json();
+        const date = document.getElementById("date");
+        const temp = document.getElementById("temp");
+        const content = document.getElementById("content");
+
+        date.innerHTML = savedData.newDate;
+        temp.innerHTML = savedData.temp + '&degC';
+        content.innerHTML = savedData.feelings;
+    } catch (error) {
+        console.log(error);
+    }
+}
