@@ -6,7 +6,7 @@ let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = ',&appid=5aca0bbb23343940f01aad543cba2b1c&units=metric';
-const server = "http://127.0.0.1:5500";
+const server = "http://127.0.0.1:8080";
 
 const postData = async(url = '', data = {}) => {
     //console.log(data);
