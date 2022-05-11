@@ -22,7 +22,7 @@ const postData = async(url = '', data = {}) => {
     console.log(response);
     try {
         const newData = await response.json();
-        console.log(`iam hero` + newData);
+        console.log(newData, `saved successfully to the server`);
         return newData;
     } catch (error) {
         console.log("error", error);
