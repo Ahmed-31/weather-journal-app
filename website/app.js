@@ -40,3 +40,37 @@ const getWeatherData = async(zip) => {
         console.log(error);
     }
 };
+
+
+const generateTheData = () => {
+    // get value after click on the button
+    const zip = document.getElementById("zip").value;
+    const feelings = document.getElementById("feelings").value;
+
+    // getWeatherData return promise
+    getWeatherData(zip).then((data) => {
+        // making sure from the received data to execute rest of the steps
+        if (data) {
+            const {
+                main: { temp },
+                name: city,
+                weather: [{ description }],
+            } = data;
+
+            const info = {
+                newDate,
+                city,
+                temp: Math.round(temp), // to get integer number
+                description,
+                feelings,
+            };
+
+            postData(server + "/add", info);
+
+        }
+    });
+};
+
+// Event listener to add function to existing HTML DOM element
+// Function called by event listener
+document.getElementById("generate").addEventListener("click", generateTheData);
